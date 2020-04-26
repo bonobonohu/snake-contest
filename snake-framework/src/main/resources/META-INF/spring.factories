@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+co.electric.snake.framework.autoconfiguration.SnakeFrameworkAutoConfiguration
