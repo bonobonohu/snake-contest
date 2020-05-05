@@ -20,13 +20,13 @@ class DefaultStrategyAutoConfiguration {
     @ConditionalOnBean(name = ["modifiableArena"])
     @Bean
     fun stoneJack(modifiableArena: ModifiableArena, defaultStrategy: DefaultStrategy): ModifiableSnake {
-        return ModifiableSnake(modifiableArena, defaultStrategy, "stoneJack")
+        return ModifiableSnake(modifiableArena, defaultStrategy, "StoneJack")
     }
 
     @ConditionalOnBean(name = ["modifiableArena"])
     @Bean
     fun stoneJill(modifiableArena: ModifiableArena, defaultStrategy: DefaultStrategy): ModifiableSnake {
-        return ModifiableSnake(modifiableArena, defaultStrategy, "stoneJill")
+        return ModifiableSnake(modifiableArena, defaultStrategy, "StoneJill")
     }
 
 }
