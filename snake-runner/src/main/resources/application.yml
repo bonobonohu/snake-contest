@@ -1,2 +1,4 @@
 snake:
   max-round: 10000
+  stop-when-reached-max-round: true
+  stop-when-a-snake-dies: true

@@ -12,12 +12,12 @@ class DefaultStrategy : SnakeStrategy {
         val foodCoordinate = arena.getFoodInNewList()[0].coordinate
         var minDistance = Int.MAX_VALUE
         var bestDirection: Direction = Direction.WEST
-        Direction.values().forEach { direction ->
-            val nextCoordinate = arena.nextCoordinate(startCoordinate, direction)
+        Direction.values().forEach {
+            val nextCoordinate = arena.nextCoordinate(startCoordinate, it)
             val actualDistance = nextCoordinate.minDistance(foodCoordinate, arena.maxCoordinate)
             if (minDistance > actualDistance && !arena.isOccupied(nextCoordinate)) {
                 minDistance = actualDistance
-                bestDirection = direction
+                bestDirection = it
             }
         }
         return bestDirection

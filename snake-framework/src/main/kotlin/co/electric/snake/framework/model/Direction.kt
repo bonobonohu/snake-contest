@@ -6,20 +6,6 @@ enum class Direction(val diffX: Int, val diffY: Int) {
 
     companion object {
 
-        private fun check(diff: Int, directionDiff: Int, maxCoordinate: Int): Boolean {
-            return diff == directionDiff
-                    || diff - maxCoordinate == directionDiff
-                    || maxCoordinate + diff == directionDiff
-        }
-
-        private fun checkY(maxCoordinate: Coordinate, yDiff: Int, direction: Direction): Boolean {
-            return check(yDiff, direction.diffY, maxCoordinate.y)
-        }
-
-        private fun checkX(maxCoordinate: Coordinate, xDiff: Int, direction: Direction): Boolean {
-            return check(xDiff, direction.diffX, maxCoordinate.x)
-        }
-
         fun getDirection(start: Coordinate, end: Coordinate, maxCoordinate: Coordinate): Direction {
             var result: Direction? = null
             var i = 0
@@ -32,6 +18,20 @@ enum class Direction(val diffX: Int, val diffY: Int) {
                 i++
             }
             return requireNotNull(result) { "Not a neighbouring cell." }
+        }
+
+        private fun checkX(maxCoordinate: Coordinate, xDiff: Int, direction: Direction): Boolean {
+            return check(xDiff, direction.diffX, maxCoordinate.x)
+        }
+
+        private fun checkY(maxCoordinate: Coordinate, yDiff: Int, direction: Direction): Boolean {
+            return check(yDiff, direction.diffY, maxCoordinate.y)
+        }
+
+        private fun check(diff: Int, directionDiff: Int, maxCoordinate: Int): Boolean {
+            return diff == directionDiff
+                    || diff - maxCoordinate == directionDiff
+                    || maxCoordinate + diff == directionDiff
         }
 
     }

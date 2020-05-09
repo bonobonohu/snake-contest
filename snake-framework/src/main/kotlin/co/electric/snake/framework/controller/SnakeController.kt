@@ -9,7 +9,7 @@ import java.awt.Dimension
 import javax.swing.JFrame
 import javax.swing.Timer
 
-class SnakeController(private val modifiableArena: ModifiableArena, private val maxRound: Int) {
+class SnakeController(private val modifiableArena: ModifiableArena, private val maxRound: Int, private val stopWhenReachedMaxRound: Boolean) {
 
     companion object {
 
@@ -48,6 +48,7 @@ class SnakeController(private val modifiableArena: ModifiableArena, private val 
     }
 
     fun step() {
+        LOG.info("___ Round: $round ___")
         checkIfMaxRoundReached()
         modifiableArena.move()
         round++
@@ -65,10 +66,10 @@ class SnakeController(private val modifiableArena: ModifiableArena, private val 
     private fun checkIfMaxRoundReached() {
         if (round == maxRound) {
             LOG.info(MAX_ROUND_REACHED_LOG_MESSAGE, maxRound)
-            modifiableArena.getSnakesInNewList().forEach { snake ->
-                LOG.info("${snake.name}: ${snake.getLength()}")
+            modifiableArena.logSnakeLengths()
+            if (stopWhenReachedMaxRound) {
+                throw MaxRoundReachedException()
             }
-            throw MaxRoundReachedException()
         }
     }
 
